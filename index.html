@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Moonbeam Design &amp; Interiors | Where Color Meets Craft</title>
+<meta name="description" content="40 years transforming spaces. Expert interior design &amp; color consulting across Dallas-Fort Worth.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#F9F5F0;--gold:#C9A84C;--gl:#D9BC74;--gd:#A8882A;
+  --terra:#C17D5A;--ch:#2C2C2C;--w:#FFF;--mu:#7A7260;
+  --pad:clamp(80px,10vw,140px);--r:10px;
+  --T:.35s cubic-bezier(.25,.46,.45,.94);
+  --sh:0 8px 40px rgba(0,0,0,.12);--sh2:0 22px 64px rgba(0,0,0,.22)
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--ch);background:var(--cream);overflow-x:hidden;line-height:1.6}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:4px;font-family:'Inter',sans-serif;font-size:.9rem;font-weight:500;letter-spacing:.04em;cursor:pointer;border:2px solid transparent;transition:all var(--T);white-space:nowrap}
+.bg{background:var(--gold);color:var(--ch);border-color:var(--gold)}
+.bg:hover{background:var(--gd);border-color:var(--gd);transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,168,76,.4)}
+.bw{background:transparent;color:var(--w);border-color:rgba(255,255,255,.7)}
+.bw:hover{background:rgba(255,255,255,.1);border-color:var(--w);transform:translateY(-2px)}
+.bd{background:var(--ch);color:var(--w);border-color:var(--ch)}
+.bd:hover{background:#111;border-color:#111;transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,.3)}
+/* ---- NAV ---- */
+#nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:0 6%;height:76px;display:flex;align-items:center;justify-content:space-between;transition:all .4s}
+#nav.sc{background:rgba(28,25,20,.93);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 2px 30px rgba(0,0,0,.25)}
+.nlo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--w);display:flex;align-items:center;gap:8px}
+.nlo .g{color:var(--gold)}
+.nml{display:flex;align-items:center;gap:32px;list-style:none}
+.nml a{color:rgba(255,255,255,.82);font-size:.875rem;letter-spacing:.03em;transition:color var(--T);position:relative}
+.nml a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width var(--T)}
+.nml a:hover{color:var(--w)}
+.nml a:hover::after{width:100%}
+.nct{padding:10px 22px!important;font-size:.8rem!important}
+.hbg{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hbg span{display:block;width:26px;height:2px;background:var(--w);border-radius:2px;transition:all .3s}
+.hbg.op span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hbg.op span:nth-child(2){opacity:0}
+.hbg.op span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mob{display:none;position:fixed;top:76px;left:0;right:0;background:rgba(24,21,16,.97);backdrop-filter:blur(20px);padding:28px 6% 48px;z-index:998;flex-direction:column}
+.mob.sh{display:flex}
+.mob a{color:rgba(255,255,255,.85);font-size:1.1rem;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.08);display:block}
+.mbc{border:none!important;margin-top:20px;justify-content:center}
+/* ---- LABELS ---- */
+.lbl{font-size:.72rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:block}
+.sech{font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(2rem,4vw,3rem);line-height:1.2}
+.acl{width:56px;height:3px;background:linear-gradient(90deg,var(--gold),var(--gl));margin:18px 0 26px;border-radius:2px}
+/* ---- HERO ---- */
+#hero{position:relative;height:100vh;min-height:700px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;overflow:hidden}
+.hbk{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920&q=85');background-size:cover;background-position:center 30%;animation:zm 14s ease-out forwards}
+@keyframes zm{from{transform:scale(1.05)}to{transform:scale(1)}}
+.hov{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,.58) 0%,rgba(0,0,0,.28) 55%,rgba(0,0,0,.14) 100%)}
+.hct{position:relative;z-index:2;padding:0 8%;max-width:820px;animation:up .9s ease .3s both}
+@keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.hey{font-size:.72rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--gl);margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.hey::before{content:'';display:block;width:40px;height:1px;background:var(--gl)}
+.hti{font-family:'Playfair Display',serif;font-size:clamp(3.2rem,7vw,6rem);font-weight:700;color:var(--w);line-height:1.08;letter-spacing:-.02em;margin-bottom:18px}
+.hsu{font-size:clamp(1rem,2vw,1.22rem);color:rgba(255,255,255,.80);font-weight:300;margin-bottom:42px;max-width:520px;line-height:1.75}
+.hbt{display:flex;gap:16px;flex-wrap:wrap}
+.hst{position:absolute;bottom:0;left:0;right:0;z-index:2;background:rgba(0,0,0,.52);backdrop-filter:blur(8px);display:flex;justify-content:center}
+.hsi{flex:1;max-width:300px;text-align:center;padding:26px 20px;border-right:1px solid rgba(255,255,255,.12);animation:up .9s ease .7s both}
+.hsi:last-child{border-right:none}
+.stn{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:var(--gl);display:block;line-height:1;margin-bottom:5px}
+.stl{font-size:.76rem;color:rgba(255,255,255,.60);letter-spacing:.14em;text-transform:uppercase}
+/* ---- ABOUT ---- */
+#about{padding:var(--pad) 8%;background:var(--w)}
+.agd{display:grid;grid-template-columns:1fr 1fr;gap:clamp(48px,8vw,110px);align-items:center;max-width:1200px;margin:0 auto}
+.aiw{position:relative}
+.aif{border-radius:var(--r);overflow:hidden;border:3px solid var(--gold);box-shadow:var(--sh)}
+.aif img{width:100%;height:560px;object-fit:cover;object-position:top center;transition:transform .6s}
+.aif:hover img{transform:scale(1.03)}
+.abg{position:absolute;bottom:22px;left:-12px;background:var(--gold);color:var(--ch);padding:12px 20px;border-radius:4px;font-weight:600;font-size:.85rem;box-shadow:0 4px 20px rgba(201,168,76,.42);white-space:nowrap}
+.atz{font-size:1.04rem;color:#555;line-height:1.88;margin-bottom:18px}
+.ahi{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
+.hit{display:flex;align-items:flex-start;gap:12px}
+.hic{width:38px;height:38px;background:rgba(201,168,76,.12);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.htx strong{display:block;font-size:.875rem;font-weight:600;margin-bottom:2px}
+.htx span{font-size:.8rem;color:var(--mu)}
+/* ---- SERVICES ---- */
+#services{padding:var(--pad) 8%;background:var(--cream)}
+.sin{text-align:center;max-width:580px;margin:0 auto 58px}
+.sin p{color:var(--mu);font-size:1.04rem;margin-top:14px;line-height:1.75}
+.sgd{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:1100px;margin:0 auto}
+.svc{position:relative;border-radius:var(--r);overflow:hidden;height:360px;cursor:pointer;box-shadow:var(--sh);transition:transform var(--T),box-shadow var(--T)}
+.svc:hover{transform:translateY(-8px) scale(1.01);box-shadow:var(--sh2)}
+.svb{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .6s}
+.svc:hover .svb{transform:scale(1.07)}
+.svo{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.80) 0%,rgba(0,0,0,.22) 55%,rgba(0,0,0,0) 100%)}
+.svt{position:absolute;bottom:0;left:0;right:0;padding:30px;color:var(--w)}
+.svi{font-size:1.9rem;margin-bottom:10px;display:block}
+.svh{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:600;margin-bottom:8px}
+.svd{font-size:.875rem;color:rgba(255,255,255,.72);margin-bottom:14px;line-height:1.6}
+.svl{font-size:.78rem;color:var(--gl);font-weight:500;letter-spacing:.07em;text-transform:uppercase;display:inline-flex;align-items:center;gap:6px;transition:gap var(--T)}
+.svc:hover .svl{gap:10px}
+/* ---- PORTFOLIO ---- */
+#portfolio{padding:var(--pad) 8%;background:var(--w)}
+.pth{text-align:center;margin-bottom:54px}
+.ptg{columns:3;column-gap:18px;max-width:1200px;margin:0 auto}
+.pti{break-inside:avoid;margin-bottom:18px;position:relative;border-radius:var(--r);overflow:hidden;cursor:pointer;box-shadow:var(--sh)}
+.pti img{width:100%;display:block;transition:transform .6s}
+.pti:hover img{transform:scale(1.06)}
+.pto{position:absolute;inset:0;background:linear-gradient(to top,rgba(20,18,14,.86) 0%,rgba(0,0,0,0) 55%);opacity:0;transition:opacity var(--T);display:flex;align-items:flex-end;padding:24px}
+.pti:hover .pto{opacity:1}
+.ptl{font-family:'Playfair Display',serif;font-size:.98rem;font-style:italic;color:var(--gl);transform:translateY(8px);transition:transform var(--T)}
+.pti:hover .ptl{transform:translateY(0)}
+/* ---- COLOR TOOL ---- */
+#color-tool{padding:var(--pad) 8%;background:var(--cream)}
+.cti{max-width:1100px;margin:0 auto}
+.cth{text-align:center;margin-bottom:56px}
+.cth p{color:var(--mu);margin-top:14px;font-size:1.04rem}
+.ctg{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
+.ctp{position:relative;border-radius:var(--r);overflow:hidden;box-shadow:var(--sh)}
+.ctim{width:100%;height:420px;object-fit:cover;display:block;transition:filter .4s}
+.ctim.ni{filter:brightness(.42)}
+.cov{position:absolute;inset:0;mix-blend-mode:multiply;opacity:.52;transition:background-color .35s;pointer-events:none;background:#C4B49A}
+.ctog{position:absolute;top:14px;right:14px;background:rgba(0,0,0,.55);color:var(--w);border:1px solid rgba(255,255,255,.3);padding:8px 16px;border-radius:30px;font-size:.78rem;cursor:pointer;font-family:'Inter',sans-serif;transition:background .3s;display:flex;align-items:center;gap:6px}
+.ctog:hover{background:rgba(0,0,0,.78)}
+.pal{padding:4px 0}
+.pl{font-size:.68rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--mu);margin-bottom:10px;margin-top:22px;display:block}
+.pl:first-child{margin-top:0}
+.sr{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:2px}
+.sw{width:50px;height:50px;border-radius:6px;cursor:pointer;border:3px solid transparent;transition:all .25s;box-shadow:0 2px 8px rgba(0,0,0,.15);position:relative}
+.sw:hover{transform:scale(1.15);box-shadow:0 6px 20px rgba(0,0,0,.28)}
+.sw.on{border-color:var(--ch);transform:scale(1.12)}
+.sw.on::after{content:"✓";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.92);font-size:1.1rem;text-shadow:0 1px 4px rgba(0,0,0,.55)}
+.csel{margin-top:22px;padding:14px 18px;background:var(--w);border-radius:4px;border-left:3px solid var(--gold);display:flex;align-items:center;gap:14px}
+.cdot{width:30px;height:30px;border-radius:50%;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+.cnm{font-size:.875rem;font-weight:600;margin-bottom:2px;display:block}
+.chx{font-family:monospace;color:var(--mu);font-size:.8rem}
+/* ---- TESTIMONIALS ---- */
+#testimonials{padding:var(--pad) 8%;background:var(--ch)}
+.thr{text-align:center;margin-bottom:58px}
+.thr .lbl{opacity:.7}
+.thr .sech{color:var(--w)}
+.ttw{overflow:hidden;max-width:860px;margin:0 auto}
+.ttr{display:flex;transition:transform .6s cubic-bezier(.25,.46,.45,.94)}
+.tcd{flex:0 0 100%;padding:48px 52px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;text-align:center;position:relative}
+.tqm{font-family:'Playfair Display',serif;font-size:7rem;color:var(--gold);opacity:.18;position:absolute;top:-10px;left:36px;line-height:1;pointer-events:none}
+.ttx{font-family:'Playfair Display',serif;font-size:clamp(1.05rem,2vw,1.28rem);font-style:italic;color:rgba(255,255,255,.9);line-height:1.82;margin-bottom:30px;position:relative;z-index:1}
+.tau{font-weight:600;color:var(--gl);font-size:.95rem}
+.tlc{font-size:.8rem;color:rgba(255,255,255,.38);margin-top:4px}
+.tds{display:flex;justify-content:center;gap:10px;margin-top:36px}
+.tdt{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.22);cursor:pointer;transition:all .3s}
+.tdt.on{width:28px;border-radius:4px;background:var(--gold)}
+/* ---- BUILDERS ---- */
+#builders{position:relative;padding:var(--pad) 8%;overflow:hidden}
+.bbi{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1600&q=75');background-size:cover;background-position:center}
+.bov{position:absolute;inset:0;background:rgba(16,13,8,.84)}
+.bin{position:relative;z-index:2;max-width:1100px;margin:0 auto}
+.btp{text-align:center;margin-bottom:62px}
+.btp .sech{color:var(--gl)}
+.btp p{color:rgba(255,255,255,.62);margin-top:14px;font-size:1.04rem;max-width:560px;margin-left:auto;margin-right:auto}
+.bcl{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-bottom:52px}
+.bco{text-align:center;padding:36px 22px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--r);transition:all var(--T)}
+.bco:hover{background:rgba(201,168,76,.08);border-color:rgba(201,168,76,.3);transform:translateY(-4px)}
+.bic{font-size:2.4rem;margin-bottom:14px}
+.bco h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;color:var(--w);margin-bottom:10px}
+.bco p{font-size:.875rem;color:rgba(255,255,255,.56);line-height:1.65}
+.bca{text-align:center}
+/* ---- CTA ---- */
+#book-cta{padding:clamp(80px,10vw,120px) 8%;background:linear-gradient(135deg,#C9A84C 0%,#D9BC74 50%,#C9A84C 100%);text-align:center}
+.bkh{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.8rem);font-weight:700;color:var(--ch);margin-bottom:16px;line-height:1.15}
+.bks{color:rgba(44,44,44,.72);font-size:1.1rem;margin-bottom:38px;max-width:520px;margin-left:auto;margin-right:auto}
+/* ---- FOOTER ---- */
+footer{background:#1A1816;padding:64px 8% 36px}
+.fgd{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:52px;max-width:1200px;margin-left:auto;margin-right:auto}
+.flo{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--w);display:flex;align-items:center;gap:8px;margin-bottom:14px}
+.flo .g{color:var(--gold)}
+.ftg{font-size:.875rem;color:rgba(255,255,255,.44);line-height:1.75;max-width:260px;margin-bottom:24px}
+.fsc{display:flex;gap:12px}
+.sic{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;transition:all .3s}
+.sic:hover{background:rgba(201,168,76,.2);border-color:var(--gold)}
+.sic svg{width:16px;height:16px;fill:rgba(255,255,255,.62)}
+.fcl h4{color:var(--gl);font-size:.72rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin-bottom:18px}
+.fcl ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.fcl ul li a{color:rgba(255,255,255,.5);font-size:.875rem;transition:color .3s}
+.fcl ul li a:hover{color:var(--w)}
+.fct{color:rgba(255,255,255,.5);font-size:.875rem;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.fbo{border-top:1px solid rgba(255,255,255,.08);padding-top:26px;display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:28px auto 0}
+.fcp{font-size:.82rem;color:rgba(255,255,255,.28)}
+.flg{display:flex;gap:20px}
+.flg a{font-size:.82rem;color:rgba(255,255,255,.28);transition:color .3s}
+.flg a:hover{color:rgba(255,255,255,.6)}
+@media(max-width:1024px){.ptg{columns:2}.fgd{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){
+  .nml,.nct{display:none}.hbg{display:flex}
+  .agd,.ctg,.sgd{grid-template-columns:1fr}
+  .aif img{height:380px}.abg{left:0}
+  .bcl{grid-template-columns:1fr}.ptg{columns:1}
+  .fgd{grid-template-columns:1fr;gap:32px}
+  .fbo{flex-direction:column;gap:14px;text-align:center}
+  .tcd{padding:36px 28px}.hst{position:relative;bottom:auto}
+}
+@media(max-width:480px){.hbt{flex-direction:column;align-items:flex-start}.ahi{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nlo">&#x1F319;&nbsp;Moon<span class="g">beam</span></a>
+  <ul class="nml">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#color-tool">Color Tool</a></li>
+    <li><a href="#book-cta">Contact</a></li>
+    <li><a href="https://calendly.com/marvellouschuyuoh-zenphry/zenphry-clarity-call" target="_blank" class="btn bg nct">Book a Call</a></li>
+  </ul>
+  <button class="hbg" id="burger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mob" id="mobNav">
+  <a href="#about" onclick="cMob()">About</a>
+  <a href="#services" onclick="cMob()">Services</a>
+  <a href="#portfolio" onclick="cMob()">Portfolio</a>
+  <a href="#color-tool" onclick="cMob()">Color Tool</a>
+  <a href="#book-cta" onclick="cMob()">Contact</a>
+  <a href="https://calendly.com/marvellouschuyuoh-zenphry/zenphry-clarity-call" target="_blank" class="btn bg mbc">Book a Call</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hbk"></div>
+  <div class="hov"></div>
+  <div class="hct">
+    <p class="hey">Dallas&#8211;Fort Worth&#8217;s Premier Design Studio</p>
+    <h1 class="hti">Where Color<br>Meets Craft</h1>
+    <p class="hsu">40 Years of Transforming Spaces. One Vision at a Time.</p>
+    <div class="hbt">
+      <a href="https://calendly.com/marvellouschuyuoh-zenphry/zenphry-clarity-call" target="_blank" class="btn bg">Book a Free Consultation</a>
+      <a href="#portfolio" class="btn bw">See Our Work</a>
+    </div>
+  </div>
+  <div class="hst">
+    <div class="hsi"><span class="stn">40+</span><span class="stl">Years of Excellence</span></div>
+    <div class="hsi"><span class="stn">500+</span><span class="stl">Projects Completed</span></div>
+    <div class="hsi"><span class="stn">98%</span><span class="stl">Client Satisfaction</span></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="agd">
+    <div class="aiw">
+      <div class="aif">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=85" alt="Shirley Moon" loading="lazy">
+      </div>
+      <div class="abg">&#10024; NCIDQ Certified Designer</div>
+    </div>
+    <div>
+      <span class="lbl">Meet the Designer</span>
+      <h2 class="sech">Meet Shirley Moon</h2>
+      <div class="acl"></div>
+      <p class="atz">With over 40 years of practice spanning residential estates, boutique hospitality, and Class-A commercial interiors, Shirley Moon has become one of Dallas&#8211;Fort Worth&#8217;s most respected design voices. Her mastery of color psychology and material harmony has earned the trust of Fortune 500 CEOs, leading builders, and discerning homeowners alike.</p>
+      <p class="atz">A pioneer in evidence-based color consulting, Shirley&#8217;s process combines deep listening with scientific precision &#8212; ensuring every space she touches not only looks extraordinary, but feels exactly right.</p>
+      <div class="ahi">
+        <div class="hit"><div class="hic">&#127968;</div><div class="htx"><strong>Residential Design</strong><span>High-end homes &amp; estates</span></div></div>
+        <div class="hit"><div class="hic">&#127912;</div><div class="htx"><strong>Color Psychology</strong><span>Science-backed palettes</span></div></div>
+        <div class="hit"><div class="hic">&#127970;</div><div class="htx"><strong>Commercial Spaces</strong><span>Offices, hotels &amp; retail</span></div></div>
+        <div class="hit"><div class="hic">&#129309;</div><div class="htx"><strong>Builder Partnerships</strong><span>White-label design services</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="sin">
+    <span class="lbl">What We Do</span>
+    <h2 class="sech">Design Services Tailored to Your Vision</h2>
+    <p>From intimate residential retreats to sweeping commercial transformations, Moonbeam delivers environments that move people.</p>
+  </div>
+  <div class="sgd">
+    <div class="svc"><div class="svb" style="background-image:url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=900&q=85')"></div><div class="svo"></div><div class="svt"><span class="svi">&#127968;</span><h3 class="svh">Residential Design</h3><p class="svd">Full-service interior design for custom homes, renovations, and luxury condos.</p><span class="svl">Learn More &#8594;</span></div></div>
+    <div class="svc"><div class="svb" style="background-image:url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=900&q=85')"></div><div class="svo"></div><div class="svt"><span class="svi">&#127912;</span><h3 class="svh">Color &amp; Paint Consulting</h3><p class="svd">Science-backed color selections for every room, lighting condition, and lifestyle.</p><span class="svl">Learn More &#8594;</span></div></div>
+    <div class="svc"><div class="svb" style="background-image:url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=85')"></div><div class="svo"></div><div class="svt"><span class="svi">&#127970;</span><h3 class="svh">Commercial Spaces</h3><p class="svd">Brand-aligned environments for offices, hospitality venues, and retail concepts.</p><span class="svl">Learn More &#8594;</span></div></div>
+    <div class="svc"><div class="svb" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=85')"></div><div class="svo"></div><div class="svt"><span class="svi">&#129309;</span><h3 class="svh">Builder Partnerships</h3><p class="svd">White-label design packages for homebuilders and residential developers.</p><span class="svl">Learn More &#8594;</span></div></div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="pth">
+    <span class="lbl">Selected Work</span>
+    <h2 class="sech">Our Portfolio</h2>
+    <p style="color:var(--mu);margin-top:12px;font-size:1.04rem">A curated selection across North Texas.</p>
+  </div>
+  <div class="ptg">
+    <div class="pti"><img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=900&q=85" alt="Modern Living Room" loading="lazy"><div class="pto"><span class="ptl">Modern Living Room &middot; Dallas TX</span></div></div>
+    <div class="pti"><img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=900&q=85" alt="Master Suite" loading="lazy"><div class="pto"><span class="ptl">Master Suite Retreat &middot; Frisco TX</span></div></div>
+    <div class="pti"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=85" alt="Chef Kitchen" loading="lazy"><div class="pto"><span class="ptl">Chef&#8217;s Kitchen &middot; Plano TX</span></div></div>
+    <div class="pti"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=85" alt="Dining Room" loading="lazy"><div class="pto"><span class="ptl">Dining Room Elegance &middot; McKinney TX</span></div></div>
+    <div class="pti"><img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=900&q=85" alt="Home Office" loading="lazy"><div class="pto"><span class="ptl">Executive Home Office &middot; Allen TX</span></div></div>
+    <div class="pti"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=900&q=85" alt="Spa Bathroom" loading="lazy"><div class="pto"><span class="ptl">Spa Bathroom &middot; Prosper TX</span></div></div>
+  </div>
+</section>
+
+<!-- COLOR TOOL -->
+<section id="color-tool">
+  <div class="cti">
+    <div class="cth">
+      <span class="lbl">Visualize Before You Commit</span>
+      <h2 class="sech">See Your Colors Before You Commit</h2>
+      <p>Click any swatch to preview it in a real room. Toggle Day/Night to see how light changes everything.</p>
+    </div>
+    <div class="ctg">
+      <div class="ctp">
+        <img class="ctim" id="roomImg" src="https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&q=85" alt="Room preview">
+        <div class="cov" id="colorOverlay"></div>
+        <button class="ctog" id="dayNightBtn" onclick="toggleDayNight()">&#9728;&#65039; Day Mode</button>
+      </div>
+      <div class="pal">
+        <span class="pl">Warm Whites</span>
+        <div class="sr">
+          <div class="sw" style="background:#F5F0E8" data-name="Ivory Linen" onclick="pickColor(this)"></div>
+          <div class="sw" style="background:#EDE3D3" data-name="Warm Sand" onclick="pickColor(this)"></div>
+          <div class="sw" style="background:#E8D8C0" data-name="Antique Cream" onclick="pickColor(this)"></div>
+        </div>
+        <span class="pl">Neutrals</span>
+        <div class="sr">
+          <div class="sw" style="background:#C4B49A" data-name="Driftwood" onclick="pickColor(this)"></div>
+          <div class="sw on" style="background:#A89070" data-name="Warm Taupe" onclick="pickColor(this)"></div>
+          <div class="sw" style="background:#8C7660" data-name="Umber" onclick="pickColor(this)"></div>
+        </div>
+        <span class="pl">Blues</span>
+        <div class="sr">
+          <div class="sw" style="background:#8BA7C7" data-name="Sky Mist" onclick="pickColor(this)"></div>
+          <div class="sw" style="background:#6B8FAF" data-name="Slate Blue" onclick="pickColor(this)"></div>
+          <div class="sw" style="background:#4A6F8F" data-name="Aegean" onclick="pickColor(this)"></div>
+        </div>
+        <span class="pl">Greens</span>
+        <div class="sr">
+          <div class="sw" style="background:#8FAF8A" data-name="Sage" onclick="pickColor(this)"></div>
+          <div class="sw" style="background:#6A9060" data-name="Fern" onclick="pickColor(this)"></div>
+          <div class="sw" style="background:#4A7040" data-name="Forest" onclick="pickColor(this)"></div>
+        </div>
+        <span class="pl">Terracottas</span>
+        <div class="sr">
+          <div class="sw" style="background:#C17D5A" data-name="Terra Cotta" onclick="pickColor(this)"></div>
+          <div class="sw" style="background:#A85F40" data-name="Canyon" onclick="pickColor(this)"></div>
+          <div class="sw" style="background:#8A4828" data-name="Adobe" onclick="pickColor(this)"></div>
+        </div>
+        <div class="csel">
+          <div class="cdot" id="selDot" style="background:#A89070"></div>
+          <div><span class="cnm" id="selName">Warm Taupe</span><span class="chx" id="selHex">#A89070</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="thr">
+    <span class="lbl">Client Stories</span>
+    <h2 class="sech">What Our Clients Say</h2>
+  </div>
+  <div class="ttw">
+    <div class="ttr" id="tTrack">
+      <div class="tcd"><div class="tqm">&#8220;</div><p class="ttx">Shirley completely transformed our home. Her eye for color is unlike anything I&#8217;ve seen in 20 years of renovation work.</p><p class="tau">Michael R.</p><p class="tlc">Dallas, TX</p></div>
+      <div class="tcd"><div class="tqm">&#8220;</div><p class="ttx">We hired Moonbeam for our new office buildout. The space now actually reflects our brand. Clients notice it immediately.</p><p class="tau">Sandra K. &mdash; CEO, Frisco Tech</p><p class="tlc">Frisco, TX</p></div>
+      <div class="tcd"><div class="tqm">&#8220;</div><p class="ttx">The before and after photos don&#8217;t do it justice. You have to walk in and feel it. That&#8217;s Shirley&#8217;s magic.</p><p class="tau">James &amp; Patricia L.</p><p class="tlc">Plano, TX</p></div>
+    </div>
+    <div class="tds" id="tDots">
+      <div class="tdt on" onclick="goSlide(0)"></div>
+      <div class="tdt" onclick="goSlide(1)"></div>
+      <div class="tdt" onclick="goSlide(2)"></div>
+    </div>
+  </div>
+</section>
+
+<!-- BUILDERS -->
+<section id="builders">
+  <div class="bbi"></div>
+  <div class="bov"></div>
+  <div class="bin">
+    <div class="btp">
+      <span class="lbl" style="opacity:.7">For Professionals</span>
+      <h2 class="sech">Built for Builders</h2>
+      <p>We partner with North Texas&#8217;s leading homebuilders and developers to deliver design excellence at every price point.</p>
+    </div>
+    <div class="bcl">
+      <div class="bco"><div class="bic">&#128196;</div><h3>Submit Room Specs</h3><p>Share floor plans, dimensions, and style goals. We handle the rest from concept to material selection.</p></div>
+      <div class="bco"><div class="bic">&#127775;</div><h3>Get Design Recommendations</h3><p>Receive curated palettes, fixture suggestions, and finish guides tailored to your buyer demographic.</p></div>
+      <div class="bco"><div class="bic">&#128203;</div><h3>White-Label Reports</h3><p>Present polished design packages to your clients under your own brand. We stay behind the scenes.</p></div>
+    </div>
+    <div class="bca"><a href="https://calendly.com/marvellouschuyuoh-zenphry/zenphry-clarity-call" target="_blank" class="btn bg">Partner With Moonbeam</a></div>
+  </div>
+</section>
+
+<!-- BOOK CTA -->
+<section id="book-cta">
+  <h2 class="bkh">Ready to Transform Your Space?</h2>
+  <p class="bks">Whether you&#8217;re renovating a single room or designing a 10,000 sq ft estate, Shirley brings 40 years of mastery to your project.</p>
+  <a href="https://calendly.com/marvellouschuyuoh-zenphry/zenphry-clarity-call" target="_blank" class="btn bd">Book Your Free Consultation</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fgd">
+    <div>
+      <div class="flo">&#x1F319;&nbsp;Moon<span class="g">beam</span></div>
+      <p class="ftg">Transforming Spaces Since 1985. Residential &amp; commercial interior design across Dallas&#8211;Fort Worth.</p>
+      <div class="fsc">
+        <a href="#" class="sic" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        <a href="#" class="sic" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+        <a href="#" class="sic" aria-label="Pinterest"><svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg></a>
+      </div>
+    </div>
+    <div class="fcl">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Residential Design</a></li>
+        <li><a href="#services">Color Consulting</a></li>
+        <li><a href="#services">Commercial Spaces</a></li>
+        <li><a href="#builders">Builder Partnerships</a></li>
+      </ul>
+    </div>
+    <div class="fcl">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#about">About Shirley</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#color-tool">Color Tool</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+      </ul>
+    </div>
+    <div class="fcl">
+      <h4>Contact</h4>
+      <p class="fct">&#9993; info@moonbeaminteriors.com</p>
+      <p class="fct">&#128222; (555) 123-4567</p>
+      <p class="fct">&#128205; Dallas&#8211;Fort Worth, TX</p>
+    </div>
+  </div>
+  <div class="fbo">
+    <p class="fcp">&copy; 2025 Moonbeam Design &amp; Interiors. All rights reserved.</p>
+    <div class="flg">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// NAV SCROLL
+var nav=document.getElementById('nav');
+window.addEventListener('scroll',function(){nav.classList.toggle('sc',window.scrollY>60)});
+// HAMBURGER
+var burger=document.getElementById('burger'),mob=document.getElementById('mobNav');
+burger.addEventListener('click',function(){burger.classList.toggle('op');mob.classList.toggle('sh')});
+function cMob(){burger.classList.remove('op');mob.classList.remove('sh')}
+// COLOR TOOL
+var isNight=false;
+function pickColor(el){
+  document.querySelectorAll('.sw').forEach(s=>s.classList.remove('on'));
+  el.classList.add('on');
+  var c=el.style.background;
+  document.getElementById('colorOverlay').style.backgroundColor=c;
+  document.getElementById('selDot').style.background=c;
+  document.getElementById('selName').textContent=el.dataset.name||c;
+  document.getElementById('selHex').textContent=c;
+}
+function toggleDayNight(){
+  isNight=!isNight;
+  var img=document.getElementById('roomImg'),btn=document.getElementById('dayNightBtn');
+  img.classList.toggle('ni',isNight);
+  btn.textContent=isNight?'\u263D Night Mode':'\u2600\uFE0F Day Mode';
+}
+// TESTIMONIALS SLIDER
+var cur=0,total=3;
+function goSlide(n){
+  cur=n;
+  document.getElementById('tTrack').style.transform='translateX(-'+(n*100)+'%)';
+  document.querySelectorAll('.tdt').forEach(function(d,i){d.classList.toggle('on',i===n)});
+}
+setInterval(function(){goSlide((cur+1)%total)},4000);
+</script>
+</body>
+</html>
