@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Moonbeam Studio | AI Interior Design Tool</title>
+<meta name="description" content="AI-powered room redesign, color analysis, lighting assessment, and furniture curation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- SIDEBAR TOGGLE (mobile) -->
+<button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">
+  <span></span><span></span><span></span>
+</button>
+
+<div class="app-shell">
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <a href="index.html" style="text-decoration:none;color:inherit;display:flex;align-items:center;gap:8px">
+        &#x1F319;&nbsp;Moon<span class="g">beam</span>
+      </a>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="#" class="active" data-view="dashboard" onclick="switchView('dashboard',this)">
+        <span class="icon">&#128202;</span> Dashboard
+      </a>
+      <a href="#" data-view="projects" onclick="switchView('projects',this)">
+        <span class="icon">&#128193;</span> My Projects
+      </a>
+      <a href="#" data-view="redesign" onclick="switchView('redesign',this)">
+        <span class="icon">&#10024;</span> AI Redesign
+      </a>
+      <a href="#" data-view="color" onclick="switchView('color',this)">
+        <span class="icon">&#127912;</span> Color Tool
+      </a>
+      <a href="#" data-view="lighting" onclick="switchView('lighting',this)">
+        <span class="icon">&#128161;</span> Lighting
+      </a>
+      <a href="#" data-view="furniture" onclick="switchView('furniture',this)">
+        <span class="icon">&#127968;</span> Furniture
+      </a>
+      <a href="#" data-view="settings" onclick="switchView('settings',this)">
+        <span class="icon">&#9881;&#65039;</span> Settings
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-plan">
+        <div class="plan-name" id="sidebarPlanName">Free Plan</div>
+        <div class="plan-label" id="sidebarPlanLabel">2 redesigns left</div>
+        <a href="index.html#pricing" class="upgrade-btn">&#11088; Upgrade to Pro</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main-content">
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="topbar-title" id="topbarTitle">Dashboard</div>
+      <div class="topbar-right">
+        <a href="index.html#pricing" class="pro-badge">&#11088; Upgrade to Pro</a>
+        <div class="avatar">S</div>
+      </div>
+    </header>
+
+    <!-- PAGE CONTENT -->
+    <main class="page-content">
+
+      <!-- ============================
+           DASHBOARD VIEW
+           ============================ -->
+      <div class="view active" id="view-dashboard">
+        <div class="welcome-banner">
+          <h1>Welcome to Moonbeam Studio &#x1F319;</h1>
+          <p>Your AI-powered interior design workspace. Transform any room in seconds.</p>
+          <div class="welcome-stats">
+            <div class="welcome-stat"><strong id="statRedesigns">0</strong><span>Redesigns</span></div>
+            <div class="welcome-stat"><strong id="statColors">0</strong><span>Colors Analyzed</span></div>
+            <div class="welcome-stat"><strong id="statProjects">3</strong><span>Projects</span></div>
+          </div>
+        </div>
+
+        <div class="quick-actions">
+          <div class="quick-card" onclick="switchView('redesign',null)">
+            <div class="qc-icon">&#10024;</div>
+            <h3>Redesign a Room</h3>
+            <p>Upload a photo and let AI reimagine your space in any style.</p>
+          </div>
+          <div class="quick-card" onclick="switchView('color',null)">
+            <div class="qc-icon">&#127912;</div>
+            <h3>Analyze Colors</h3>
+            <p>Extract a palette from your room and get paint recommendations.</p>
+          </div>
+          <div class="quick-card" onclick="switchView('lighting',null)">
+            <div class="qc-icon">&#128161;</div>
+            <h3>Check Lighting</h3>
+            <p>Get a professional lighting assessment with fixture recommendations.</p>
+          </div>
+        </div>
+
+        <h2 class="section-heading">Recent Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600&q=80" alt="Living Room">
+            <div class="project-card-body">
+              <h4>Modern Living Room</h4>
+              <span>Redesigned 2 days ago</span>
+              <div class="project-tag">AI Redesign</div>
+            </div>
+          </div>
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&q=80" alt="Master Suite">
+            <div class="project-card-body">
+              <h4>Master Suite Palette</h4>
+              <span>Analyzed 5 days ago</span>
+              <div class="project-tag">Color Analysis</div>
+            </div>
+          </div>
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=600&q=80" alt="Home Office">
+            <div class="project-card-body">
+              <h4>Home Office Lighting</h4>
+              <span>Assessed 1 week ago</span>
+              <div class="project-tag">Lighting</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:28px;padding:20px 24px;background:var(--w);border-radius:12px;border:1px solid rgba(201,168,76,.25);display:flex;align-items:center;gap:16px">
+          <span style="font-size:1.5rem">&#128273;</span>
+          <div>
+            <strong style="font-size:.9rem;display:block;margin-bottom:3px">Free Plan — <span id="dashRedesignCount">2</span> redesigns remaining this month</strong>
+            <span style="font-size:.82rem;color:var(--mu)">Upgrade to Pro for unlimited redesigns, lighting analysis, and furniture suggestions.</span>
+          </div>
+          <a href="index.html#pricing" style="margin-left:auto;padding:10px 22px;background:var(--gold);color:var(--ch);border-radius:6px;font-weight:600;font-size:.85rem;white-space:nowrap">Upgrade &#8599;</a>
+        </div>
+      </div>
+
+      <!-- ============================
+           PROJECTS VIEW
+           ============================ -->
+      <div class="view" id="view-projects">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:28px">
+          <h2 class="section-heading" style="margin-bottom:0">My Projects</h2>
+          <button onclick="switchView('redesign',null)" style="padding:11px 22px;background:var(--gold);color:var(--ch);border:none;border-radius:6px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif">+ New Project</button>
+        </div>
+        <div class="projects-grid">
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600&q=80" alt="Living Room">
+            <div class="project-card-body"><h4>Modern Living Room</h4><span>Redesigned 2 days ago</span><div class="project-tag">AI Redesign</div></div>
+          </div>
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&q=80" alt="Master Suite">
+            <div class="project-card-body"><h4>Master Suite Palette</h4><span>Analyzed 5 days ago</span><div class="project-tag">Color Analysis</div></div>
+          </div>
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=600&q=80" alt="Home Office">
+            <div class="project-card-body"><h4>Home Office Lighting</h4><span>Assessed 1 week ago</span><div class="project-tag">Lighting</div></div>
+          </div>
+          <div class="project-card" id="savedProject" style="display:none">
+            <img id="savedProjectImg" src="" alt="Saved">
+            <div class="project-card-body"><h4 id="savedProjectTitle">New Redesign</h4><span>Just now</span><div class="project-tag">AI Redesign</div></div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ============================
+           AI REDESIGN VIEW
+           ============================ -->
+      <div class="view" id="view-redesign">
+        <div id="redesignLimitNotice" class="limit-notice" style="display:none">
+          <span class="limit-icon">&#128273;</span>
+          <div><strong>You've used both free redesigns this month.</strong> <a href="index.html#pricing" style="color:var(--gold);font-weight:600">Upgrade to Pro</a> for unlimited redesigns.</div>
+        </div>
+
+        <div style="margin-bottom:28px">
+          <h2 class="section-heading" style="margin-bottom:6px">AI Room Redesign</h2>
+          <p style="color:var(--mu);font-size:.9rem">Upload a photo of your room and let Moonbeam's AI transform it into your dream space.</p>
+        </div>
+
+        <!-- UPLOAD ZONE -->
+        <div class="upload-zone" id="uploadZone">
+          <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp" onchange="handleFileSelect(event)">
+          <div class="upload-icon">&#128247;</div>
+          <h3>Drop your room photo here</h3>
+          <p>Drag &amp; drop or click to browse &mdash; JPG, PNG, WebP up to 10MB</p>
+        </div>
+
+        <!-- UPLOADED PREVIEW -->
+        <div class="uploaded-preview" id="uploadedPreview">
+          <img id="previewImg" src="" alt="Your room">
+          <div class="preview-actions">
+            <span style="font-size:.85rem;color:var(--mu)">&#9989; Photo ready for redesign</span>
+            <button onclick="resetUpload()" style="margin-left:auto;background:none;border:1px solid rgba(0,0,0,.15);padding:7px 16px;border-radius:6px;font-size:.8rem;cursor:pointer;font-family:'Inter',sans-serif">Change Photo</button>
+          </div>
+        </div>
+
+        <!-- DESIGN OPTIONS -->
+        <div class="design-options" id="designOptions">
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:24px;color:var(--ch)">Design Preferences</h3>
+          <div class="options-grid">
+            <div class="opt-group">
+              <label class="opt-label">Interior Style</label>
+              <div class="style-grid">
+                <label class="style-option">
+                  <input type="radio" name="style" value="Modern" checked>
+                  <div class="style-thumb">
+                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=120&q=60" alt="Modern">
+                    <div class="style-thumb-label">Modern</div>
+                  </div>
+                </label>
+                <label class="style-option">
+                  <input type="radio" name="style" value="Traditional">
+                  <div class="style-thumb">
+                    <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=120&q=60" alt="Traditional">
+                    <div class="style-thumb-label">Traditional</div>
+                  </div>
+                </label>
+                <label class="style-option">
+                  <input type="radio" name="style" value="Scandinavian">
+                  <div class="style-thumb">
+                    <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=120&q=60" alt="Scandinavian">
+                    <div class="style-thumb-label">Scandinavian</div>
+                  </div>
+                </label>
+                <label class="style-option">
+                  <input type="radio" name="style" value="Industrial">
+                  <div class="style-thumb">
+                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=120&q=60" alt="Industrial">
+                    <div class="style-thumb-label">Industrial</div>
+                  </div>
+                </label>
+                <label class="style-option">
+                  <input type="radio" name="style" value="Bohemian">
+                  <div class="style-thumb">
+                    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=120&q=60" alt="Bohemian">
+                    <div class="style-thumb-label">Bohemian</div>
+                  </div>
+                </label>
+                <label class="style-option">
+                  <input type="radio" name="style" value="Coastal">
+                  <div class="style-thumb">
+                    <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=120&q=60" alt="Coastal">
+                    <div class="style-thumb-label">Coastal</div>
+                  </div>
+                </label>
+                <label class="style-option">
+                  <input type="radio" name="style" value="Mid-Century">
+                  <div class="style-thumb">
+                    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=120&q=60" alt="Mid-Century">
+                    <div class="style-thumb-label">Mid-Century</div>
+                  </div>
+                </label>
+                <label class="style-option">
+                  <input type="radio" name="style" value="Farmhouse">
+                  <div class="style-thumb">
+                    <img src="https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=120&q=60" alt="Farmhouse">
+                    <div class="style-thumb-label">Farmhouse</div>
+                  </div>
+                </label>
+              </div>
+
+              <label class="opt-label" style="margin-top:24px">Room Type</label>
+              <div class="room-type-grid" id="roomTypeGrid">
+                <div class="room-chip selected" onclick="selectChip(this,'roomTypeGrid')">Living Room</div>
+                <div class="room-chip" onclick="selectChip(this,'roomTypeGrid')">Bedroom</div>
+                <div class="room-chip" onclick="selectChip(this,'roomTypeGrid')">Kitchen</div>
+                <div class="room-chip" onclick="selectChip(this,'roomTypeGrid')">Bathroom</div>
+                <div class="room-chip" onclick="selectChip(this,'roomTypeGrid')">Office</div>
+                <div class="room-chip" onclick="selectChip(this,'roomTypeGrid')">Dining Room</div>
+              </div>
+            </div>
+
+            <div class="opt-group">
+              <label class="opt-label">Color Preference</label>
+              <div class="color-swatches-mini" id="colorSwatches">
+                <div class="swatch-mini" style="background:#F5F0E8" title="Ivory Linen" onclick="toggleSwatch(this)"></div>
+                <div class="swatch-mini" style="background:#EDE3D3" title="Warm Sand" onclick="toggleSwatch(this)"></div>
+                <div class="swatch-mini" style="background:#E8D8C0" title="Antique Cream" onclick="toggleSwatch(this)"></div>
+                <div class="swatch-mini" style="background:#C4B49A" title="Driftwood" onclick="toggleSwatch(this)"></div>
+                <div class="swatch-mini" style="background:#A89070" title="Warm Taupe" onclick="toggleSwatch(this)"></div>
+                <div class="swatch-mini" style="background:#8C7660" title="Umber" onclick="toggleSwatch(this)"></div>
+                <div class="swatch-mini" style="background:#8BA7C7" title="Sky Mist" onclick="toggleSwatch(this)"></div>
+                <div class="swatch-mini" style="background:#6B8FAF" title="Slate Blue" onclick="toggleSwatch(this)"></div>
+                <div class="swatch-mini" style="background:#4A6F8F" title="Aegean" onclick="toggleSwatch(this)"></div>
+                <div class="swatch-mini" style="background:#8FAF8A" title="Sage" onclick="toggleSwatch(this)"></div>
+                <div class="swatch-mini" style="background:#6A9060" title="Fern" onclick="toggleSwatch(this)"></div>
+                <div class="swatch-mini" style="background:#4A7040" title="Forest" onclick="toggleSwatch(this)"></div>
+                <div class="swatch-mini" style="background:#C17D5A" title="Terra Cotta" onclick="toggleSwatch(this)"></div>
+                <div class="swatch-mini" style="background:#A85F40" title="Canyon" onclick="toggleSwatch(this)"></div>
+                <div class="swatch-mini" style="background:#8A4828" title="Adobe" onclick="toggleSwatch(this)"></div>
+              </div>
+
+              <label class="opt-label" style="margin-top:24px">Special Requests</label>
+              <div class="special-req">
+                <textarea id="specialRequests" placeholder="e.g., 'more natural light', 'add a TV stand', 'keep the existing sofa'"></textarea>
+              </div>
+
+              <label class="opt-label" style="margin-top:24px">Shirley&#8217;s Design Note</label>
+              <div style="padding:16px;background:rgba(201,168,76,.08);border-radius:8px;border-left:3px solid var(--gold)">
+                <p style="font-size:.85rem;font-style:italic;color:var(--ch);line-height:1.65">"Every great room begins with intention. Before the AI transforms your space, close your eyes and imagine how you want to <em>feel</em> in it. That feeling is your true design brief."</p>
+                <span style="font-size:.75rem;color:var(--mu);margin-top:8px;display:block">&mdash; Shirley Moon, NCIDQ</span>
+              </div>
+            </div>
+          </div>
+
+          <button class="generate-btn" id="generateBtn" onclick="generateRedesign()">
+            <span>&#10024;</span> Generate AI Redesign
+          </button>
+        </div>
+
+        <!-- RESULTS PANEL -->
+        <div class="results-panel" id="resultsPanel">
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:20px">Your Redesign</h3>
+          <div class="results-grid">
+            <div class="result-image-wrap">
+              <img id="originalResult" src="" alt="Original">
+              <div class="result-label">Original</div>
+            </div>
+            <div class="result-image-wrap">
+              <img id="generatedResult" src="" alt="AI Redesign">
+              <div class="result-label">AI Redesign &#10024;</div>
+            </div>
+          </div>
+          <div class="result-actions">
+            <a id="downloadBtn" href="#" download="moonbeam-redesign.jpg" class="btn bg" style="font-size:.85rem;padding:11px 24px">&#11015; Download</a>
+            <button onclick="generateRedesign()" class="btn bd" style="font-size:.85rem;padding:11px 24px">&#8635; Regenerate</button>
+            <button onclick="saveToProjects()" class="btn" style="font-size:.85rem;padding:11px 24px;background:var(--cream);border:1px solid rgba(0,0,0,.15);color:var(--ch)">&#128190; Save to Projects</button>
+          </div>
+          <div id="falNote" style="display:none;margin-top:16px;padding:14px 18px;background:rgba(193,125,90,.08);border:1px solid rgba(193,125,90,.25);border-radius:8px;font-size:.85rem;color:var(--ch)">
+            <strong>&#128161; Demo Mode:</strong> Connect your Fal AI key in Settings to enable live generation. This is a placeholder result.
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ============================
+           COLOR TOOL VIEW
+           ============================ -->
+      <div class="view" id="view-color">
+        <div style="margin-bottom:28px">
+          <h2 class="section-heading" style="margin-bottom:6px">Color Analysis Tool</h2>
+          <p style="color:var(--mu);font-size:.9rem">Upload a room photo to extract its dominant color palette and get professional paint recommendations.</p>
+        </div>
+
+        <div class="color-analysis-wrap">
+          <div>
+            <div class="upload-zone" id="colorUploadZone" style="padding:40px 28px">
+              <input type="file" id="colorFileInput" accept="image/jpeg,image/png,image/webp" onchange="handleColorUpload(event)">
+              <div class="upload-icon" style="font-size:2rem">&#127912;</div>
+              <h3 style="font-size:1.1rem">Upload Room Photo</h3>
+              <p>We'll extract up to 8 dominant colors</p>
+            </div>
+            <canvas id="colorCanvas" style="display:none"></canvas>
+            <div id="colorPreviewWrap" style="display:none;margin-top:16px;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.08)">
+              <img id="colorPreviewImg" src="" alt="Room" style="width:100%;max-height:280px;object-fit:cover">
+            </div>
+          </div>
+          <div>
+            <div id="colorResults" style="display:none">
+              <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:16px">Extracted Palette</h3>
+              <div class="extracted-palette" id="extractedPalette"></div>
+
+              <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;margin:24px 0 16px">Paint Recommendations</h3>
+              <div id="paintRecommendations"></div>
+
+              <button onclick="applyColorToRedesign()" style="margin-top:20px;width:100%;padding:14px;background:var(--gold);color:var(--ch);border:none;border-radius:8px;font-family:'Inter',sans-serif;font-weight:600;cursor:pointer;font-size:.9rem;transition:all .2s">
+                &#10024; Apply to AI Redesign
+              </button>
+            </div>
+            <div id="colorPlaceholder" style="display:flex;align-items:center;justify-content:center;height:300px;color:var(--mu);font-size:.9rem;text-align:center;flex-direction:column;gap:12px">
+              <span style="font-size:3rem;opacity:.3">&#127912;</span>
+              <p>Upload a room photo to see<br>your color palette analysis</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================
+           LIGHTING VIEW
+           ============================ -->
+      <div class="view" id="view-lighting">
+        <div style="margin-bottom:28px">
+          <h2 class="section-heading" style="margin-bottom:6px">Lighting Analysis</h2>
+          <p style="color:var(--mu);font-size:.9rem">Get a professional assessment of your room's lighting with specific fixture recommendations.</p>
+        </div>
+        <div id="lightingGate">
+          <div style="text-align:center;padding:60px 40px;background:var(--w);border-radius:16px;border:1px solid rgba(0,0,0,.07)">
+            <div style="font-size:3.5rem;margin-bottom:20px">&#128161;</div>
+            <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:12px">Lighting Analysis is a Pro Feature</h3>
+            <p style="color:var(--mu);margin-bottom:28px;max-width:400px;margin-left:auto;margin-right:auto">Unlock professional lighting assessments, fixture recommendations, and time-of-day analysis with Moonbeam Pro.</p>
+            <button onclick="showUpgradeModal()" style="padding:14px 36px;background:var(--gold);color:var(--ch);border:none;border-radius:6px;font-weight:600;font-size:.95rem;cursor:pointer;font-family:'Inter',sans-serif">&#11088; Upgrade to Pro</button>
+            <div style="margin-top:16px"><button onclick="bypassLightingGate()" style="background:none;border:none;color:var(--mu);font-size:.82rem;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:underline">Continue with demo preview</button></div>
+          </div>
+        </div>
+        <div id="lightingTool" style="display:none">
+          <div class="lighting-wrap">
+            <div>
+              <div class="upload-zone" id="lightingUploadZone" style="padding:40px 28px">
+                <input type="file" id="lightingFileInput" accept="image/jpeg,image/png,image/webp" onchange="handleLightingUpload(event)">
+                <div class="upload-icon" style="font-size:2rem">&#128161;</div>
+                <h3 style="font-size:1.1rem">Upload Room Photo</h3>
+                <p>We'll assess your lighting conditions</p>
+              </div>
+              <div id="lightingAnalysisPanel" style="display:none;margin-top:20px">
+                <div style="background:var(--w);border-radius:12px;padding:24px;border:1px solid rgba(0,0,0,.07)">
+                  <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:20px">Lighting Assessment</h3>
+                  <div class="lighting-score-ring">
+                    <span class="score-num" id="lightScore">7</span>
+                    <span class="score-label">OUT OF 10</span>
+                  </div>
+                  <p style="text-align:center;font-size:.82rem;color:var(--mu);margin-bottom:20px" id="lightScoreLabel">Good natural light with room to improve</p>
+                  <ul class="lighting-checklist" id="lightingChecklist">
+                    <li><span class="check-icon">✦</span><span>Natural light: Moderate — east-facing exposure detected</span></li>
+                    <li><span class="check-icon">✦</span><span>Overhead coverage: Insufficient — shadows in corners</span></li>
+                    <li><span class="check-icon">✦</span><span>Task lighting: Missing near reading/work areas</span></li>
+                    <li><span class="check-icon">✦</span><span>Warm/cool balance: Slightly cool — recommend 2700K bulbs</span></li>
+                    <li><span class="check-icon">✦</span><span>Time of day: Morning light optimal, afternoon needs supplement</span></li>
+                  </ul>
+                </div>
+                <div class="product-suggestions">
+                  <h3 style="font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:12px">Recommended Fixtures</h3>
+                  <div class="product-item"><span class="product-icon">&#128161;</span><div class="product-info"><strong>Warm LED Recessed Lighting</strong><span>4" trim, 2700K, dimmable — install 4-6 evenly spaced</span></div></div>
+                  <div class="product-item"><span class="product-icon">&#127774;</span><div class="product-info"><strong>Floor Lamp — Reading Area</strong><span>Arched style, warm white 3000K bulb, place near seating</span></div></div>
+                  <div class="product-item"><span class="product-icon">&#127775;</span><div class="product-info"><strong>Accent Lighting Strip</strong><span>Shelf or cove lighting to reduce shadows</span></div></div>
+                  <div class="product-item"><span class="product-icon">&#128256;</span><div class="product-info"><strong>Smart Dimmer Switch</strong><span>Lutron Caseta — enables mood transitions morning to evening</span></div></div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div id="lightingImgWrap" style="display:none">
+                <h3 style="font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:16px">Light Zone Analysis</h3>
+                <div class="lighting-overlay-wrap">
+                  <img id="lightingPreviewImg" src="" alt="Room lighting" style="width:100%;border-radius:12px">
+                  <div class="light-zone-overlay" id="lightZoneOverlay"></div>
+                </div>
+                <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap">
+                  <div style="display:flex;align-items:center;gap:6px;font-size:.78rem"><span style="width:14px;height:14px;border-radius:3px;background:rgba(255,220,50,.35);display:inline-block"></span>Natural light zone</div>
+                  <div style="display:flex;align-items:center;gap:6px;font-size:.78rem"><span style="width:14px;height:14px;border-radius:3px;background:rgba(100,160,255,.25);display:inline-block"></span>Supplemental needed</div>
+                  <div style="display:flex;align-items:center;gap:6px;font-size:.78rem"><span style="width:14px;height:14px;border-radius:3px;background:rgba(50,50,50,.35);display:inline-block"></span>Shadow zone</div>
+                </div>
+              </div>
+              <div id="lightingPlaceholder" style="display:flex;align-items:center;justify-content:center;height:360px;color:var(--mu);font-size:.9rem;text-align:center;flex-direction:column;gap:12px">
+                <span style="font-size:3rem;opacity:.3">&#128161;</span>
+                <p>Upload a photo to see your<br>lighting zone map</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ============================
+           FURNITURE VIEW
+           ============================ -->
+      <div class="view" id="view-furniture">
+        <div style="margin-bottom:28px">
+          <h2 class="section-heading" style="margin-bottom:6px">Furniture Suggestions</h2>
+          <p style="color:var(--mu);font-size:.9rem">Get curated furniture picks based on your style, room, and budget.</p>
+        </div>
+        <div id="furnitureGate">
+          <div style="text-align:center;padding:60px 40px;background:var(--w);border-radius:16px;border:1px solid rgba(0,0,0,.07)">
+            <div style="font-size:3.5rem;margin-bottom:20px">&#127968;</div>
+            <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:12px">Furniture Suggestions is a Pro Feature</h3>
+            <p style="color:var(--mu);margin-bottom:28px;max-width:400px;margin-left:auto;margin-right:auto">Unlock curated furniture picks with budget filtering and style matching with Moonbeam Pro.</p>
+            <button onclick="showUpgradeModal()" style="padding:14px 36px;background:var(--gold);color:var(--ch);border:none;border-radius:6px;font-weight:600;font-size:.95rem;cursor:pointer;font-family:'Inter',sans-serif">&#11088; Upgrade to Pro</button>
+            <div style="margin-top:16px"><button onclick="bypassFurnitureGate()" style="background:none;border:none;color:var(--mu);font-size:.82rem;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:underline">Preview demo results</button></div>
+          </div>
+        </div>
+        <div id="furnitureTool" style="display:none">
+          <div class="furniture-controls">
+            <div class="form-group">
+              <label>Room Type</label>
+              <select id="furnitureRoom" onchange="generateFurniture()">
+                <option>Living Room</option>
+                <option>Bedroom</option>
+                <option>Kitchen</option>
+                <option>Dining Room</option>
+                <option>Office</option>
+                <option>Bathroom</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Style</label>
+              <select id="furnitureStyle" onchange="generateFurniture()">
+                <option>Modern</option>
+                <option>Traditional</option>
+                <option>Scandinavian</option>
+                <option>Industrial</option>
+                <option>Bohemian</option>
+                <option>Coastal</option>
+                <option>Mid-Century</option>
+                <option>Farmhouse</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Budget: <span id="budgetDisplay" class="budget-display">$5,000</span></label>
+              <input type="range" id="budgetSlider" min="500" max="50000" value="5000" step="500" oninput="updateBudget(this.value);generateFurniture()">
+            </div>
+          </div>
+          <div class="furniture-grid" id="furnitureGrid"></div>
+        </div>
+      </div>
+
+      <!-- ============================
+           SETTINGS VIEW
+           ============================ -->
+      <div class="view" id="view-settings">
+        <div style="margin-bottom:28px">
+          <h2 class="section-heading" style="margin-bottom:6px">Settings</h2>
+          <p style="color:var(--mu);font-size:.9rem">Manage your account, API keys, and preferences.</p>
+        </div>
+
+        <div class="settings-card">
+          <h3>Fal AI Integration</h3>
+          <p style="font-size:.85rem;color:var(--mu);margin-bottom:16px">Connect your Fal AI key to enable live room redesign generation.</p>
+          <label style="font-size:.8rem;font-weight:600;color:var(--mu);letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:8px">FAL_KEY</label>
+          <input type="text" class="api-key-input" id="falKeyInput" placeholder="PASTE_FAL_KEY_HERE" value="">
+          <button class="save-btn" onclick="saveFalKey()">Save API Key</button>
+          <p style="font-size:.78rem;color:var(--mu);margin-top:8px">Get your key at <a href="https://fal.ai" target="_blank" style="color:var(--gold)">fal.ai</a></p>
+        </div>
+
+        <div class="settings-card">
+          <h3>Plan &amp; Usage</h3>
+          <div class="settings-row">
+            <label>Current Plan</label>
+            <span id="settingsPlan" style="font-weight:600;color:var(--gold)">Free</span>
+          </div>
+          <div class="settings-row">
+            <label>AI Redesigns Used</label>
+            <span id="settingsUsed">0 / 2</span>
+          </div>
+          <div class="settings-row">
+            <label>Reset Date</label>
+            <span>1st of each month</span>
+          </div>
+          <a href="index.html#pricing" style="display:inline-block;margin-top:16px;padding:10px 24px;background:var(--gold);color:var(--ch);border-radius:6px;font-weight:600;font-size:.88rem">Upgrade Plan</a>
+        </div>
+
+        <div class="settings-card">
+          <h3>Preferences</h3>
+          <div class="settings-row">
+            <label>Save redesigns automatically</label>
+            <label class="toggle">
+              <input type="checkbox" checked>
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          <div class="settings-row">
+            <label>Show Shirley's design tips</label>
+            <label class="toggle">
+              <input type="checkbox" checked>
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          <div class="settings-row">
+            <label>Email weekly inspiration</label>
+            <label class="toggle">
+              <input type="checkbox">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="settings-card">
+          <h3>Danger Zone</h3>
+          <div class="settings-row">
+            <label>Clear all saved projects</label>
+            <button onclick="clearProjects()" style="padding:7px 18px;background:rgba(193,125,90,.1);color:var(--terra);border:1px solid rgba(193,125,90,.3);border-radius:6px;font-size:.82rem;cursor:pointer;font-family:'Inter',sans-serif">Clear Projects</button>
+          </div>
+          <div class="settings-row">
+            <label>Reset usage counter</label>
+            <button onclick="resetUsage()" style="padding:7px 18px;background:rgba(0,0,0,.04);color:var(--ch);border:1px solid rgba(0,0,0,.12);border-radius:6px;font-size:.82rem;cursor:pointer;font-family:'Inter',sans-serif">Reset Counter</button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- SPINNER -->
+<div class="spinner-overlay" id="spinnerOverlay">
+  <div class="spinner"></div>
+  <p class="spinner-text" id="spinnerText">Generating your redesign&#8230;</p>
+</div>
+
+<!-- UPGRADE MODAL -->
+<div class="modal-overlay" id="upgradeModal" onclick="closeModal(event)">
+  <div class="modal-box">
+    <div class="modal-icon">&#11088;</div>
+    <h2>Upgrade to Moonbeam Pro</h2>
+    <p>Unlock the full power of AI interior design with unlimited access to all tools.</p>
+    <ul class="modal-features">
+      <li>Unlimited AI room redesigns</li>
+      <li>Full color palette + custom colors</li>
+      <li>Professional lighting analysis</li>
+      <li>Curated furniture suggestions</li>
+      <li>Shirley's personal design notes</li>
+      <li>Priority support</li>
+    </ul>
+    <div class="modal-actions">
+      <a href="index.html#pricing" class="btn bg" style="width:100%;justify-content:center">Start Pro Trial &mdash; $29/mo</a>
+      <button class="modal-close" onclick="document.getElementById('upgradeModal').classList.remove('visible')">Maybe later</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
